@@ -1,0 +1,10 @@
+com.foodwaste.backend
+com.foodwaste.backend.config
+com.foodwaste.backend.controller
+com.foodwaste.backend.dto
+com.foodwaste.backend.exception
+com.foodwaste.backend.model
+com.foodwaste.backend.repository
+com.foodwaste.backend.security
+com.foodwaste.backend.service
+com.foodwaste.backend.service.factory
