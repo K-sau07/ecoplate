@@ -29,7 +29,7 @@ const Sidebar = ({ onLogout, userRole = 'STORE_MANAGER' }) => {
           { icon: <MdLocalShipping />, label: 'Orders', path: '/store-orders' },
           { icon: <MdBarChart />, label: 'Analytics', path: '/analytics' },
           { icon: <MdPeople />, label: 'Recipients', path: '/recipients' },
-          { icon: <MdMessage />, label: 'Messages', path: '/messages' },
+          { icon: <MdMessage />, label: 'Notifications', path: '/messages' },
           { icon: <MdSettings />, label: 'Settings', path: '/settings' }
         ]
       case 'CUSTOMER':
@@ -37,7 +37,7 @@ const Sidebar = ({ onLogout, userRole = 'STORE_MANAGER' }) => {
           { icon: <MdShoppingCart />, label: 'Browse Food', path: '/dashboard' },
           { icon: <MdAssignment />, label: 'My Orders', path: '/orders' },
           { icon: <MdFavorite />, label: 'Favorites', path: '/favorites' },
-          { icon: <MdMessage />, label: 'Messages', path: '/messages' },
+          { icon: <MdMessage />, label: 'Notifications', path: '/messages' },
           { icon: <MdSettings />, label: 'Settings', path: '/settings' }
         ]
       case 'NGO':
@@ -45,7 +45,7 @@ const Sidebar = ({ onLogout, userRole = 'STORE_MANAGER' }) => {
           { icon: <MdCardGiftcard />, label: 'Available Donations', path: '/dashboard' },
           { icon: <MdInventory />, label: 'My Claims', path: '/claims' },
           { icon: <MdBarChart />, label: 'Impact Report', path: '/impact' },
-          { icon: <MdMessage />, label: 'Messages', path: '/messages' },
+          { icon: <MdMessage />, label: 'Notifications', path: '/messages' },
           { icon: <MdSettings />, label: 'Settings', path: '/settings' }
         ]
       default:
