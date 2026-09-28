@@ -4,6 +4,12 @@
 surplus stock gets sold at a dynamic discount before it expires, and whatever doesn't sell
 routes to NGOs for free distribution instead of landfill.
 
+**[Live demo →](https://ecoplate-gamma.vercel.app)**  ·  API: [ecoplate-api.onrender.com](https://ecoplate-api.onrender.com/actuator/health)
+
+> Hosted on free tiers: the API sleeps after ~15 minutes idle, so the first request after a
+> quiet spell takes about 50 seconds to wake it. Everything after that is fast.
+
+
 ![Java](https://img.shields.io/badge/Java_17-ED8B00?style=flat-square&logo=openjdk&logoColor=white)
 ![Spring](https://img.shields.io/badge/Spring_Boot-6DB33F?style=flat-square&logo=springboot&logoColor=white)
 ![React](https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=react&logoColor=black)
