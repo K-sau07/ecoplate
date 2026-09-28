@@ -11,7 +11,8 @@ services:
     envVars:
       - key: SPRING_PROFILES_ACTIVE
         value: prod
-      # Neon JDBC URL, e.g. jdbc:postgresql://host/db?sslmode=require&user=..&password=..
+      # Neon JDBC URL. Use the DIRECT endpoint (host WITHOUT -pooler) — the pooled
+      # endpoint drops the SET search_path that pins this service to its schema.
       - key: DATABASE_URL
         sync: false
       # Generate once; the prod profile has no fallback and will refuse to boot without it.
