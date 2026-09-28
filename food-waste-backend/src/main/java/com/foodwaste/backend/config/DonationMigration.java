@@ -3,6 +3,8 @@ package com.foodwaste.backend.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.jdbc.core.JdbcTemplate;
+import javax.sql.DataSource;
+import java.sql.Connection;
 import org.springframework.stereotype.Component;
 
 /**
@@ -14,9 +16,15 @@ public class DonationMigration implements CommandLineRunner {
     
     @Autowired
     private JdbcTemplate jdbcTemplate;
+
+    @Autowired
+    private DataSource dataSource;
     
     @Override
     public void run(String... args) {
+        if (!isMySql()) {
+            return;
+        }
         try {
             // Add isDonation column to food_items table if it doesn't exist
             String addColumnSql = 
@@ -48,6 +56,22 @@ public class DonationMigration implements CommandLineRunner {
         } catch (Exception e) {
             System.err.println("❌ Donation migration failed: " + e.getMessage());
             e.printStackTrace();
+        }
+    }
+
+    /**
+     * These statements are MySQL-specific patches for databases created before the
+     * corresponding entity fields existed (MODIFY COLUMN, LONGTEXT, BIT, AUTO_INCREMENT
+     * are all MySQL syntax). On any other database — Postgres in production — Hibernate's
+     * ddl-auto=update creates the schema from the entities directly, so there is nothing
+     * to patch and running this would fail on the first statement.
+     */
+    private boolean isMySql() {
+        try (Connection c = dataSource.getConnection()) {
+            String product = c.getMetaData().getDatabaseProductName();
+            return product != null && product.toLowerCase().contains("mysql");
+        } catch (Exception e) {
+            return false;
         }
     }
 }

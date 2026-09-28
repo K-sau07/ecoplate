@@ -40,6 +40,9 @@ public class SecurityConfig {
                 .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
+                        // Render polls this to decide whether the instance is live; it must
+                        // be reachable without a token or the service is marked unhealthy.
+                        .requestMatchers("/actuator/health", "/actuator/health/**").permitAll()
                         .requestMatchers("/api/auth/**").permitAll()
                         .requestMatchers("/api/food-items", "/api/food-items/**").permitAll()
                         .requestMatchers("/api/reviews/food-item/**").permitAll()
